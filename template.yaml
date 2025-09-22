@@ -13,11 +13,23 @@ spec:
     - title: GitHub Repository URL
       required: 
         - Github_URL
+        - Dockerfile
+        - Port
       properties:
         Github_URL:
           title: Enter you Github URL
           type: string
           description: Enter the github URL where your code exists
+          ui:autofocus: true
+        Dockerfile:
+          title: Enter the Path of Dockerfile
+          type: string
+          description: Enter the Dockerfile path (e.g. build/Dockerfile or enter Dockerfile if it is in root) 
+          ui:autofocus: true
+        Port:
+          title: Enter the Port number
+          type: string
+          description: Enter the Port number of your application(e.g 80/3000/5000)
           ui:autofocus: true
           
 # parameters:
@@ -55,7 +67,7 @@ spec:
       input:
         cwd: ${{ steps.clone.output.path }}
         command: docker 
-        args: ["build", "-t", "my-image:latest", "."]
+        args: ["build", "-f", "${{ parameters.Dockerfile }}", "-t", "my-image:latest", "."]
 
 
     - id: cleanup
@@ -72,7 +84,7 @@ spec:
       input:
         cwd: ${{ steps.clone.output.path }}
         command: docker
-        args: ["run", "--name", "Cafe-container", "-it", "-d", "-p", "89:80", "my-image:latest"]
+        args: ["run", "--name", "Cafe-container", "-it", "-d", "-p", "89:${{ parameters.Port }}", "my-image:latest"]
 
     # - id: run-echo
     #   name: Echo Test
