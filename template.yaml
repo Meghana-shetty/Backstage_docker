@@ -20,7 +20,7 @@ spec:
           title: Enter you Github URL
           type: string
           description: Enter the github URL where your code exists
-          #ui:autofocus: true
+          ui:autofocus: true
         Dockerfile:
           title: Enter the Path of Dockerfile
           type: string
