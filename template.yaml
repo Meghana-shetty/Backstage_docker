@@ -111,6 +111,7 @@ steps:
 
   - id: build_docker
     name: Build Docker Image
+    if: ${{ parameters.stack == 'Docker' }}
     action: shell:run
     input:
       cwd: ${{ steps.clone.output.path }}
@@ -120,6 +121,7 @@ steps:
 
   - id: cleanup
     name: Remove old container if exists
+    if: ${{ parameters.stack == 'Docker' }}
     action: shell:run
     input:
       command: docker
@@ -128,6 +130,7 @@ steps:
 
   - id: deploy_docker
     name: Deploy Docker Container
+    if: ${{ parameters.stack == 'Docker' }}
     action: shell:run
     input:
       cwd: ${{ steps.clone.output.path }}
@@ -144,4 +147,4 @@ steps:
 output:
   links:
     - title: Repository
-      url: ""
+      url: "http://localhost:89" 
