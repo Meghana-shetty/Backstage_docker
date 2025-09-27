@@ -133,8 +133,6 @@ steps:
       cwd: ${{ steps.clone.output.path }}
       command: docker
       args: ["run", "--name", "Cafe-container", "-it", "-d", "-p", "89:${{ parameters.extraFields.Port }}", "my-image:latest"]
-    output:
-      deployedUrl: "http://localhost:89"
 
     # - id: run-echo
     #   name: Echo Test
@@ -146,4 +144,4 @@ steps:
 output:
   links:
     - title: Link to deployed application
-      url: ${{ steps.deploy_docker.output.deployedUrl }}
+      url: "http://localhost:89"
