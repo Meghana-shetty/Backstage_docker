@@ -9,69 +9,70 @@ spec:
   type: service
 
   
-  parameters:
-    - title: GitHub Repository URL
-      required: 
-        - Github_URL
-        # - Dockerfile
-        # - Port
-      properties:
-        Github_URL:
-          title: Enter you Github URL
-          type: string
-          description: Enter the github URL where your code exists
-          ui:autofocus: true
+parameters:
+  - title: GitHub Repository URL
+    required: 
+      - Github_URL
+    properties:
+      Github_URL:
+        title: Enter your Github URL
+        type: string
+        description: Enter the github URL where your code exists
 
-          # added regarding dropdown
-    - title: Select where you want to deploy your code
-      required:
-        - stack
-      properties:
-        stack:
-          title: Select from below list
-          type: string
-          enum:
-            - Docker
-            - Github pages
-            - Baremetal
-            - Kubernetes
-  
-    - title: Enter below details
-      dependencies:
-        stack:
-          oneOf:
-            - properties:
-                stack:
-                  const: Docker
-                type: object         # 👈 REQUIRED
-                properties:          # 👈 fields go here
+  - title: Select where you want to deploy your code
+    required:
+      - stack
+    properties:
+      stack:
+        title: Select from below list
+        type: string
+        enum:
+          - Docker
+          - Github pages
+          - Baremetal
+          - Kubernetes
+
+  - title: Enter below details
+    dependencies:
+      stack:
+        oneOf:
+          - properties:
+              stack:
+                const: Docker
+              extraFields:          # 👈 wrap everything else inside a schema key
+                type: object
+                properties:
                   Dockerfile:
                     title: Enter the Path of Dockerfile
                     type: string
                     description: Enter the Dockerfile path (e.g. build/Dockerfile or enter Dockerfile if it is in root) 
                   Port:
                     title: Enter the Port number
-                    type: integer     # 👈 better as integer, not string
+                    type: integer
+                    minimum: 1
+                    maximum: 65535
                     description: Enter the Port number of your application (e.g. 80/3000/5000)
-  
-            - properties:
-                stack:
-                  const: Github pages
-                type: object
-                properties: {}
-  
-            - properties:
-                stack:
-                  const: Baremetal
-                type: object
-                properties: {}
-  
-            - properties:
-                stack:
-                  const: Kubernetes
+
+          - properties:
+              stack:
+                const: Github pages
+              extraFields:
                 type: object
                 properties: {}
 
+          - properties:
+              stack:
+                const: Baremetal
+              extraFields:
+                type: object
+                properties: {}
+
+          - properties:
+              stack:
+                const: Kubernetes
+              extraFields:
+                type: object
+                properties: {}
 
                   
 
