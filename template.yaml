@@ -13,37 +13,65 @@ spec:
     - title: GitHub Repository URL
       required: 
         - Github_URL
-        - Dockerfile
-        - Port
+        # - Dockerfile
+        # - Port
       properties:
         Github_URL:
           title: Enter you Github URL
           type: string
           description: Enter the github URL where your code exists
           ui:autofocus: true
-        Dockerfile:
-          title: Enter the Path of Dockerfile
+
+          # added regarding dropdown
+    - title: Select where you want to deploy your code
+      required:
+        - stack
+      properties:
+        stack:
+          title: Select from below list
           type: string
-          description: Enter the Dockerfile path (e.g. build/Dockerfile or enter Dockerfile if it is in root) 
-          #ui:autofocus: true
-        Port:
-          title: Enter the Port number
-          type: string
-          description: Enter the Port number of your application(e.g 80/3000/5000)
+          enum:
+            - Docker
+            - Github pages
+            - Baremetal
+            - Kubernetes
+          enumNames:
+            - Docker
+            - Github pages
+            - Baremetal
+            - Kubernetes
+
+    - title: Enter below details
+      dependencies:
+        stack:
+          oneOf:
+            - properties:
+                stack:
+                  const: Docker
+                Dockerfile:
+                  title: Enter the Path of Dockerfile
+                  type: string
+                  description: Enter the Dockerfile path (e.g. build/Dockerfile or enter Dockerfile if it is in root) 
+
+                Port:
+                title: Enter the Port number
+                type: string
+                description: Enter the Port number of your application(e.g 80/3000/5000)
+                  
+
+
+            ####################previous code###########
+        # Dockerfile:
+        #   title: Enter the Path of Dockerfile
+        #   type: string
+        #   description: Enter the Dockerfile path (e.g. build/Dockerfile or enter Dockerfile if it is in root) 
+        #   #ui:autofocus: true
+        # Port:
+        #   title: Enter the Port number
+        #   type: string
+        #   description: Enter the Port number of your application(e.g 80/3000/5000)
           #ui:autofocus: true
           
-# parameters:
-#   - title: Fill in project details
-#     required:
-#       - name
-#       - description
-#       - owner
-#     properties:
-#       name:
-#         title: Project Name
-#         type: string
-#         description: What’s the name of your project?
-#         ui:autofocus: true
           
   steps:
     - id: fetch-template
