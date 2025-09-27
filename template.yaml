@@ -122,6 +122,7 @@ spec:
 
     - id: build_docker
       name: Build Docker Image
+      if: ${{ parameters.stack == 'Docker' }}
       action: shell:run
       input:
         cwd: ${{ steps.clone.output.path }}
@@ -131,6 +132,7 @@ spec:
 
     - id: cleanup
       name: Remove old container if exists
+      if: ${{ parameters.stack == 'Docker' }}
       action: shell:run
       input:
         command: docker
@@ -139,6 +141,7 @@ spec:
 
     - id: deploy_docker
       name: Deploy Docker Container
+      if: ${{ parameters.stack == 'Docker' }}
       action: shell:run
       input:
         cwd: ${{ steps.clone.output.path }}
