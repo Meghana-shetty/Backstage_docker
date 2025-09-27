@@ -143,5 +143,5 @@ steps:
 
 output:
   links:
-    - title: Link to deployed application
-      url: "http://localhost:89"
+    - title: Repository
+      url: ""
