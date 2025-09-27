@@ -145,5 +145,5 @@ steps:
 
 output:
     links:
-      - title: Repository
+      - title: Link to deployed application
         url: ${{ steps.deploy_docker.output.deployedUrl }}
