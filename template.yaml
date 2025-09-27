@@ -140,3 +140,8 @@ steps:
     #   input:
     #     command: echo
     #     args: ["Hello Backstage!"]
+
+output:
+    links:
+      - title: Repository
+        url: "http://localhost:89"
