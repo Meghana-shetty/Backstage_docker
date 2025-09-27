@@ -73,21 +73,6 @@ parameters:
               extraFields:
                 type: object
                 properties: {}
-
-                  
-
-
-            ####################previous code###########
-        # Dockerfile:
-        #   title: Enter the Path of Dockerfile
-        #   type: string
-        #   description: Enter the Dockerfile path (e.g. build/Dockerfile or enter Dockerfile if it is in root) 
-        #   #ui:autofocus: true
-        # Port:
-        #   title: Enter the Port number
-        #   type: string
-        #   description: Enter the Port number of your application(e.g 80/3000/5000)
-          #ui:autofocus: true
           
                   
 steps:
