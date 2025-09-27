@@ -126,7 +126,7 @@ spec:
       input:
         cwd: ${{ steps.clone.output.path }}
         command: docker 
-        args: ["build", "-f", "${{ parameters.Dockerfile }}", "-t", "my-image:latest", "."]
+        args: ["build", "-f", "${{ parameters.extraFields.Dockerfile }}", "-t", "my-image:latest", "."]
 
 
     - id: cleanup
@@ -143,7 +143,7 @@ spec:
       input:
         cwd: ${{ steps.clone.output.path }}
         command: docker
-        args: ["run", "--name", "Cafe-container", "-it", "-d", "-p", "89:${{ parameters.Port }}", "my-image:latest"]
+        args: ["run", "--name", "Cafe-container", "-it", "-d", "-p", "89:${{ parameters.extraFields.Port }}", "my-image:latest"]
 
     # - id: run-echo
     #   name: Echo Test
