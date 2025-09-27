@@ -136,7 +136,7 @@ steps:
     #     command: echo
     #     args: ["Hello Backstage!"]
 
-output:
-  links:
-    - title: Repository
-      url: "http://localhost:89" 
+# output:
+#   links:
+#     - title: Repository
+#       url: "http://localhost:89" 
