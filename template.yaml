@@ -42,8 +42,8 @@ parameters:
               extraFields:          # 👈 wrap everything else inside a schema key
                 type: object
                 required:          # 👈 make fields mandatory
-                - Dockerfile
-                - Port
+                  - Dockerfile
+                  - Port
                 properties:
                   Dockerfile:
                     title: Enter the Path of Dockerfile
