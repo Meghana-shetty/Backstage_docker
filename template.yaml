@@ -13,8 +13,8 @@ spec:
     - title: GitHub Repository URL
       required: 
         - Github_URL
-        - Dockerfile
-        - Port
+        #- Dockerfile
+        #- Port
       properties:
         Github_URL:
           title: Enter you Github URL
