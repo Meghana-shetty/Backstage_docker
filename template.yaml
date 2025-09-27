@@ -43,6 +43,7 @@ spec:
                 stack:
                   const: Docker
                 extraFields:          # 👈 wrap everything else inside a schema key
+                  title: Enter the details
                   type: object
                   properties:
                     Dockerfile:
