@@ -144,6 +144,6 @@ steps:
     #     args: ["Hello Backstage!"]
 
 output:
-    links:
-      - title: Link to deployed application
-        url: ${{ steps.deploy_docker.output.deployedUrl }}
+  links:
+    - title: Link to deployed application
+      url: ${{ steps.deploy_docker.output.deployedUrl }}
