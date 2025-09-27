@@ -35,12 +35,7 @@ spec:
             - Github pages
             - Baremetal
             - Kubernetes
-          enumNames:
-            - Docker
-            - Github pages
-            - Baremetal
-            - Kubernetes
-
+  
     - title: Enter below details
       dependencies:
         stack:
@@ -48,29 +43,33 @@ spec:
             - properties:
                 stack:
                   const: Docker
-                properties:        # 👈 must be here
+                type: object         # 👈 REQUIRED
+                properties:          # 👈 fields go here
                   Dockerfile:
                     title: Enter the Path of Dockerfile
                     type: string
                     description: Enter the Dockerfile path (e.g. build/Dockerfile or enter Dockerfile if it is in root) 
                   Port:
                     title: Enter the Port number
-                    type: string
+                    type: integer     # 👈 better as integer, not string
                     description: Enter the Port number of your application (e.g. 80/3000/5000)
   
             - properties:
                 stack:
                   const: Github pages
-                properties: {}     # no extra inputs yet
+                type: object
+                properties: {}
   
             - properties:
                 stack:
                   const: Baremetal
+                type: object
                 properties: {}
   
             - properties:
                 stack:
                   const: Kubernetes
+                type: object
                 properties: {}
 
 
