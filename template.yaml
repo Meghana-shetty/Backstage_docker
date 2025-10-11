@@ -107,7 +107,7 @@ spec:
   steps:
     - id: fetch-template
       name: Fetch template files
-      action: fetch:template
+      action: fetch:plain
       input:
         url: ${{ parameters.Github_URL }}
         targetPath: .
