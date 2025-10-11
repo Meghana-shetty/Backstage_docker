@@ -50,6 +50,7 @@ spec:
                       title: Enter the Path of Dockerfile
                       type: string
                       description: Enter the Dockerfile path (e.g. build/Dockerfile or enter Dockerfile if it is in root) 
+                      default: "Dockerfile" 
                     Port:
                       title: Enter the Port number
                       type: integer
