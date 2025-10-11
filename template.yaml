@@ -154,3 +154,9 @@ spec:
     #   input:
     #     command: echo
     #     args: ["Hello Backstage!"]
+
+  output:
+    links:
+      - title: "Open Website"
+        url: "http://localhost:89"
+        icon: "website"
